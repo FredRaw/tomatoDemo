@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Combinatorial Testing Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+    .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    select { width: 100%; padding: 8px; margin: 10px 0; border-radius: 8px; border: 1px solid #ccc; }
+    #message { margin-top: 15px; font-weight: bold; font-size: 1.1em; }
+    .valid { color: green; }
+    .invalid { color: red; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Combinatorial Testing Demo</h2>
+    <label for="product">Choose product:</label>
+    <select id="product">
+      <option value="">-- Select --</option>
+      <option value="phone">Phone</option>
+      <option value="laptop">Laptop</option>
+      <option value="tablet">Tablet</option>
+    </select>
+
+    <label for="size">Choose size:</label>
+    <select id="size">
+      <option value="">-- Select --</option>
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+      <option value="xl">XL</option>
+    </select>
+
+    <label for="color">Choose color:</label>
+    <select id="color">
+      <option value="">-- Select --</option>
+      <option value="black">Black</option>
+      <option value="white">White</option>
+      <option value="blue">Blue</option>
+      <option value="red">Red</option>
+    </select>
+
+    <label for="os">Choose operating system:</label>
+    <select id="os">
+      <option value="">-- Select --</option>
+      <option value="android">Android</option>
+      <option value="ios">iOS</option>
+      <option value="windows">Windows</option>
+      <option value="linux">Linux</option>
+    </select>
+
+    <label for="delivery">Choose delivery method:</label>
+    <select id="delivery">
+      <option value="">-- Select --</option>
+      <option value="pickup">Pickup in store</option>
+      <option value="mail">Mail delivery</option>
+      <option value="express">Express delivery</option>
+    </select>
+
+    <div id="message"></div>
+  </div>
+
+  <script>
+    const product = document.getElementById("product");
+    const size = document.getElementById("size");
+    const color = document.getElementById("color");
+    const os = document.getElementById("os");
+    const delivery = document.getElementById("delivery");
+    const message = document.getElementById("message");
+
+    function validate() {
+      const selected = {
+        product: product.value,
+        size: size.value,
+        color: color.value,
+        os: os.value,
+        delivery: delivery.value
+      };
+
+      if (selected.product && selected.size && selected.color && selected.os && selected.delivery) {
+        const validCombinations = JSON.parse(localStorage.getItem("validCombinations")) || [];
+        const isValid = validCombinations.some(c =>
+          c.product === selected.product &&
+          c.size === selected.size &&
+          c.color === selected.color &&
+          c.os === selected.os &&
+          c.delivery === selected.delivery
+        );
+
+        if (isValid) {
+          message.textContent = "✅ Valid combination!";
+          message.className = "valid";
+        } else {
+          message.textContent = "❌ Invalid combination!";
+          message.className = "invalid";
+        }
+      } else {
+        message.textContent = "";
+        message.className = "";
+      }
+    }
+
+    [product, size, color, os, delivery].forEach(el => {
+      el.addEventListener("change", validate);
+    });
+  </script>
+</body>
+</html>

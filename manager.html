@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Combination Manager</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+    .container { max-width: 1000px; margin: auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9em; }
+    th, td { padding: 6px; border: 1px solid #ddd; text-align: center; }
+    th { background: #f0f0f0; }
+    button { margin-top: 15px; padding: 10px 15px; border: none; border-radius: 8px; background: #007bff; color: white; cursor: pointer; }
+    button:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Combination Manager</h2>
+    <p>Select which combinations should be valid. Your choices are saved automatically in your browser.</p>
+    
+    <table id="comboTable">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Size</th>
+          <th>Color</th>
+          <th>OS</th>
+          <th>Delivery</th>
+          <th>Valid?</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <button onclick="clearSelections()">Clear All</button>
+  </div>
+
+  <script>
+    const products = ["phone", "laptop", "tablet"];
+    const sizes = ["small", "medium", "large", "xl"];
+    const colors = ["black", "white", "blue", "red"];
+    const osList = ["android", "ios", "windows", "linux"];
+    const deliveries = ["pickup", "mail", "express"];
+
+    const tbody = document.querySelector("#comboTable tbody");
+
+    function generateTable() {
+      tbody.innerHTML = "";
+      products.forEach(p => {
+        sizes.forEach(s => {
+          colors.forEach(c => {
+            osList.forEach(o => {
+              deliveries.forEach(d => {
+                const id = `${p}-${s}-${c}-${o}-${d}`;
+                const saved = JSON.parse(localStorage.getItem("validCombinations")) || [];
+                const checked = saved.some(combo =>
+                  combo.product === p && combo.size === s && combo.color === c && combo.os === o && combo.delivery === d
+                );
+
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                  <td>${p}</td>
+                  <td>${s}</td>
+                  <td>${c}</td>
+                  <td>${o}</td>
+                  <td>${d}</td>
+                  <td><input type="checkbox" id="${id}" ${checked ? "checked" : ""}></td>
+                `;
+                tbody.appendChild(row);
+
+                row.querySelector("input").addEventListener("change", e => {
+                  updateValidCombinations(p, s, c, o, d, e.target.checked);
+                });
+              });
+            });
+          });
+        });
+      });
+    }
+
+    function updateValidCombinations(product, size, color, os, delivery, isChecked) {
+      let validCombinations = JSON.parse(localStorage.getItem("validCombinations")) || [];
+      if (isChecked) {
+        validCombinations.push({ product, size, color, os, delivery });
+      } else {
+        validCombinations = validCombinations.filter(c =>
+          !(c.product === product && c.size === size && c.color === color && c.os === os && c.delivery === delivery)
+        );
+      }
+      localStorage.setItem("validCombinations", JSON.stringify(validCombinations));
+    }
+
+    function clearSelections() {
+      localStorage.removeItem("validCombinations");
+      generateTable();
+    }
+
+    generateTable();
+  </script>
+</body>
+</html>
