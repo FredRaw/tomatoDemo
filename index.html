@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webshop Test Page</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; display: flex; gap: 40px; }
+    .card { border: 1px solid #ccc; padding: 20px; border-radius: 8px; width: 45%; }
+    h2 { margin-top: 0; }
+    .row { display: flex; align-items: center; margin-bottom: 10px; gap: 10px; }
+    input[type=number] { width: 80px; padding: 4px; }
+    select { padding: 4px; }
+    button { padding: 6px 12px; cursor: pointer; }
+    .error { color: red; font-weight: bold; }
+    .actions { margin-top: 15px; }
+  </style>
+</head>
+<body>
+  <!-- Admin Page -->
+  <div class="card">
+    <h2>Admin Page</h2>
+    <div id="price-settings"></div>
+
+    <h3>Invalid Combinations</h3>
+    <div class="row">
+      <select id="combo-select"></select>
+      <button onclick="addToCombo()">Add to Combo</button>
+    </div>
+    <div>Current: <span id="current-combo"></span></div>
+    <button onclick="saveCombo()">Save Combo</button>
+
+    <ul id="invalid-list"></ul>
+
+    <div class="actions">
+      <button onclick="resetAll()">🔄 Reset All</button>
+    </div>
+  </div>
+
+  <!-- Shop Page -->
+  <div class="card">
+    <h2>Shop Page</h2>
+    <div id="shop"></div>
+    <div><strong>Total: $<span id="total">0</span></strong></div>
+    <div id="error" class="error"></div>
+  </div>
+
+  <script>
+    const products = [
+      { id: "saw", name: "Circular Saw" },
+      { id: "drill", name: "Battery Drill" },
+      { id: "lamp", name: "Working Lamp" },
+      { id: "battery12", name: "Battery Pack 12V" },
+      { id: "battery18", name: "Battery Pack 18V" },
+    ];
+
+    let prices = JSON.parse(localStorage.getItem("prices")) || {};
+    let cart = {};
+    let invalidCombos = JSON.parse(localStorage.getItem("invalidCombos")) || [];
+    let currentCombo = [];
+
+    // Build admin price inputs
+    const priceDiv = document.getElementById("price-settings");
+    products.forEach(p => {
+      const row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = `<span style="width:150px">${p.name}</span>
+        <input id="price-input-${p.id}" type="number" min="0" placeholder="Price" onchange="setPrice('${p.id}', this.value)">`;
+      priceDiv.appendChild(row);
+    });
+
+    // Build shop inputs
+    const shopDiv = document.getElementById("shop");
+    products.forEach(p => {
+      const row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = `<span style="width:150px">${p.name}</span>
+        <input id="cart-input-${p.id}" type="number" min="0" value="0" onchange="setCart('${p.id}', this.value)">
+        <span id="price-${p.id}">$0</span>`;
+      shopDiv.appendChild(row);
+    });
+
+    // Build combo select
+    const comboSelect = document.getElementById("combo-select");
+    products.forEach(p => {
+      const opt = document.createElement("option");
+      opt.value = p.id;
+      opt.textContent = p.name;
+      comboSelect.appendChild(opt);
+    });
+
+    // Restore saved prices and combos
+    window.onload = () => {
+      products.forEach(p => {
+        if (prices[p.id]) {
+          document.getElementById(`price-input-${p.id}`).value = prices[p.id];
+          document.getElementById(`price-${p.id}`).textContent = `$${prices[p.id]}`;
+        }
+      });
+      invalidCombos.forEach(combo => {
+        const li = document.createElement("li");
+        li.textContent = "❌ " + combo.map(id => products.find(p => p.id === id).name).join(", ");
+        document.getElementById("invalid-list").appendChild(li);
+      });
+    };
+
+    function setPrice(id, value) {
+      prices[id] = Number(value);
+      document.getElementById(`price-${id}`).textContent = `$${value}`;
+      localStorage.setItem("prices", JSON.stringify(prices));
+      updateTotal();
+    }
+
+    function setCart(id, value) {
+      cart[id] = Number(value);
+      updateTotal();
+    }
+
+    function updateTotal() {
+      let total = 0;
+      for (let id in cart) {
+        total += (prices[id] || 0) * (cart[id] || 0);
+      }
+      document.getElementById("total").textContent = total;
+
+      // Check invalid combos
+      const errorDiv = document.getElementById("error");
+      const active = Object.keys(cart).filter(id => cart[id] > 0);
+      const bad = invalidCombos.some(combo => combo.every(p => active.includes(p)));
+      errorDiv.textContent = bad ? "❌ Invalid combination selected" : "";
+    }
+
+    function addToCombo() {
+      const val = comboSelect.value;
+      if (!currentCombo.includes(val)) {
+        currentCombo.push(val);
+      }
+      document.getElementById("current-combo").textContent = currentCombo.map(id => products.find(p => p.id === id).name).join(", ");
+    }
+
+    function saveCombo() {
+      if (currentCombo.length > 1) {
+        invalidCombos.push([...currentCombo]);
+        localStorage.setItem("invalidCombos", JSON.stringify(invalidCombos));
+        const li = document.createElement("li");
+        li.textContent = "❌ " + currentCombo.map(id => products.find(p => p.id === id).name).join(", ");
+        document.getElementById("invalid-list").appendChild(li);
+        currentCombo = [];
+        document.getElementById("current-combo").textContent = "";
+      }
+    }
+
+    function resetAll() {
+      // Clear prices
+      products.forEach(p => {
+        prices[p.id] = 0;
+        document.getElementById(`price-input-${p.id}`).value = "";
+        document.getElementById(`price-${p.id}`).textContent = "$0";
+      });
+
+      // Clear cart
+      products.forEach(p => {
+        cart[p.id] = 0;
+        document.getElementById(`cart-input-${p.id}`).value = 0;
+      });
+
+      // Clear combos
+      invalidCombos = [];
+      currentCombo = [];
+      document.getElementById("invalid-list").innerHTML = "";
+      document.getElementById("current-combo").textContent = "";
+
+      // Clear local storage
+      localStorage.removeItem("prices");
+      localStorage.removeItem("invalidCombos");
+
+      // Reset totals and errors
+      document.getElementById("total").textContent = 0;
+      document.getElementById("error").textContent = "";
+    }
+  </script>
+</body>
+</html>
