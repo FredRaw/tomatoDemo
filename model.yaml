@@ -1,0 +1,40 @@
+functions:
+  - function: shopPage
+    parameters:
+      - parameter: circularSaw
+        choices:
+          - choice: "0"
+          - choice: "1"
+          - choice: "2"
+          - choice: "3"
+      - parameter: batteryDrill
+        choices:
+          - choice: "0"
+          - choice: "1"
+          - choice: "2"
+          - choice: "3"
+      - parameter: workingLamp
+        choices:
+          - choice: "0"
+          - choice: "1"
+          - choice: "2"
+          - choice: "3"
+      - parameter: batteryPack12V
+        choices:
+          - choice: "0"
+          - choice: "1"
+          - choice: "2"
+          - choice: "3"
+      - parameter: batteryPack18V
+        choices:
+          - choice: "0"
+          - choice: "1"
+          - choice: "2"
+          - choice: "3"
+    logic:
+      - constraint: availability of products
+        expression: IF 'batteryDrill' IS '1' THEN 'batteryPack18V' IS '0'
+      - constraint: Circular saw is not compatible with battery pack 18V
+        expression: IF 'circularSaw' IS '1' THEN 'batteryPack18V' IS '0'
+      - constraint: Working lamp is not compatible with battery pack 12V
+        expression: IF 'workingLamp' IS '1' THEN 'batteryPack12V' IS '0'
