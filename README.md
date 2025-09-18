@@ -12,4 +12,7 @@ Suggested flow
     2.4 Use playwright to run test in index.html with the combinations generated from tomato
     2.5 Use GA pages to display test report
 
-    
+Dev environment 
+
+- Install playwright (npm init playwright@latest) to project folder - install with TS and github actions workflow, rest default
+- 
