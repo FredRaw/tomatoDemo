@@ -1,40 +1,77 @@
 functions:
-  - function: shopPage
+  - function: Practice Form
     parameters:
-      - parameter: circularSaw
+      - parameter: name
         choices:
-          - choice: "0"
-          - choice: "1"
-          - choice: "2"
-          - choice: "3"
-      - parameter: batteryDrill
+          - choice: "Diego Maradonna"
+          - choice: "Marie Curie"
+          - choice: "Neutral being"
+      - parameter: email
         choices:
-          - choice: "0"
-          - choice: "1"
-          - choice: "2"
-          - choice: "3"
-      - parameter: workingLamp
+          - choice: "dm@heaven.com"
+          - choice: "lm@lag.com"
+          - choice: "mb@arg.com"
+      - parameter: gender
         choices:
-          - choice: "0"
-          - choice: "1"
-          - choice: "2"
-          - choice: "3"
-      - parameter: batteryPack12V
+          - choice: "Male"
+          - choice: "Female"
+          - choice: "Other"
+      - parameter: mobile
         choices:
-          - choice: "0"
-          - choice: "1"
-          - choice: "2"
-          - choice: "3"
-      - parameter: batteryPack18V
+          - choice: "1234567890"
+          - choice: "2345678901"
+          - choice: "3456789012"
+      - parameter: birthdate
         choices:
-          - choice: "0"
-          - choice: "1"
-          - choice: "2"
-          - choice: "3"
+          - choice: "18 Okt 1967"
+          - choice: "20 Jan 1955"
+          - choice: "22 Feb 1999"
+      - parameter: subjects
+        choices:
+          - choice: "Math"
+          - choice: "Medicine"
+          - choice: "Philosophy"
+      - parameter: hobbies
+        choices:
+          - choice: "Sports"
+          - choice: "Reading"
+          - choice: "Music"
+      - parameter: current Address
+        choices:
+          - choice: "123 Main St. Oslo"
+          - choice: "1011 Pine St. Wroclaw"
+          - choice: "1213 Maple St. Amsterdam"
+          - choice: "1617 Birch St. Wroclaw"
+      - parameter: state
+        choices: 
+          - choice: "NCR"
+          - choice: "Uttar Pradesh"
+          - choice: "Haryana"
+          - choice: "Rajasthan"
+      - parameter: city
+        choices:
+          - choice: "Delhi"
+          - choice: "Gurgaon"
+          - choice: "Noida"
+          - choice: "Agra"
+          - choice: "Lucknow"
+          - choice: "Merrut"
+          - choice: "Karnal"
+          - choice: "Panipat"
+          - choice: "Jaipur"
+          - choice: "Jaiselmer"
     logic:
-      - constraint: availability of products
-        expression: IF 'batteryDrill' IS '1' THEN 'batteryPack18V' IS '0'
-      - constraint: Circular saw is not compatible with battery pack 18V
-        expression: IF 'circularSaw' IS '1' THEN 'batteryPack18V' IS '0'
-      - constraint: Working lamp is not compatible with battery pack 12V
-        expression: IF 'workingLamp' IS '1' THEN 'batteryPack12V' IS '0'
+      - constraint: name - email - gender - mobile - date of birth
+        expression: IF 'name' IS 'Diego Maradonna' THEN 'email' IS 'dm@heaven.com' AND 'gender' IS 'Male' AND 'mobile' IS '1234567890' AND 'birthdate' IS '18 Okt 1967'
+      - constraint: name - gender
+        expression: IF 'name' IS 'Marie Curie' THEN 'gender' IS 'Female'
+      - constraint: name - gender
+        expression: IF 'name' IS 'Neutral being' THEN 'gender' IS 'Other'
+      - constraint: state - city
+        expression: IF 'state' IS 'NCR' THEN 'city' IN ['Delhi', 'Gurgaon', 'Noida']
+      - constraint: state - city
+        expression: IF 'state' IS 'Uttar Pradesh' THEN 'city' IN ['Agra', 'Lucknow', 'Merrut']
+      - constraint: state - city
+        expression: IF 'state' IS 'Haryana' THEN 'city' IN ['Karnal', 'Panipat']
+      - constraint: state - city
+        expression: IF 'state' IS 'Rajasthan' THEN 'city' IN ['Jaipur', 'Jaiselmer']

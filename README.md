@@ -14,5 +14,12 @@ Suggested flow
 
 Dev environment 
 
+- Install tomaton  (pip install testomaton)
 - Install playwright (npm init playwright@latest) to project folder - install with TS and github actions workflow, rest default
+- 
+
+Things to do
+
+- Make a testomaton model.yaml file of the site you want to test
+- $ tomato model.yaml > tomato_combinations.csv (To generate the testdata and print them to a .CSV file)
 - 

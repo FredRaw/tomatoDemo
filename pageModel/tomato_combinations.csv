@@ -1,0 +1,43 @@
+name,email,gender,mobile,birthdate,subjects,hobbies,current Address,state,city
+Marie Curie,mb@arg.com,Female,2345678901,18 Okt 1967,Medicine,Sports,1011 Pine St. Wroclaw,Haryana,Karnal
+Neutral being,dm@heaven.com,Other,2345678901,20 Jan 1955,Philosophy,Reading,123 Main St. Oslo,Rajasthan,Jaipur
+Diego Maradonna,dm@heaven.com,Male,1234567890,18 Okt 1967,Medicine,Music,1213 Maple St. Amsterdam,NCR,Delhi
+Neutral being,mb@arg.com,Other,3456789012,22 Feb 1999,Math,Sports,1213 Maple St. Amsterdam,Uttar Pradesh,Agra
+Marie Curie,mb@arg.com,Female,1234567890,20 Jan 1955,Math,Music,1617 Birch St. Wroclaw,Haryana,Panipat
+Diego Maradonna,dm@heaven.com,Male,1234567890,18 Okt 1967,Math,Reading,1011 Pine St. Wroclaw,NCR,Gurgaon
+Diego Maradonna,dm@heaven.com,Male,1234567890,18 Okt 1967,Philosophy,Sports,1617 Birch St. Wroclaw,Rajasthan,Jaipur
+Marie Curie,lm@lag.com,Female,3456789012,22 Feb 1999,Medicine,Reading,123 Main St. Oslo,Uttar Pradesh,Merrut
+Neutral being,lm@lag.com,Other,1234567890,22 Feb 1999,Philosophy,Music,1011 Pine St. Wroclaw,Haryana,Karnal
+Marie Curie,dm@heaven.com,Female,3456789012,20 Jan 1955,Philosophy,Sports,1011 Pine St. Wroclaw,Haryana,Panipat
+Neutral being,lm@lag.com,Other,2345678901,18 Okt 1967,Math,Sports,123 Main St. Oslo,NCR,Noida
+Marie Curie,mb@arg.com,Female,3456789012,20 Jan 1955,Philosophy,Sports,1213 Maple St. Amsterdam,NCR,Gurgaon
+Marie Curie,mb@arg.com,Female,2345678901,22 Feb 1999,Math,Reading,123 Main St. Oslo,NCR,Delhi
+Neutral being,lm@lag.com,Other,2345678901,20 Jan 1955,Medicine,Music,1617 Birch St. Wroclaw,Uttar Pradesh,Lucknow
+Marie Curie,dm@heaven.com,Female,1234567890,22 Feb 1999,Philosophy,Music,1617 Birch St. Wroclaw,NCR,Noida
+Marie Curie,dm@heaven.com,Female,1234567890,18 Okt 1967,Medicine,Music,123 Main St. Oslo,Uttar Pradesh,Agra
+Marie Curie,lm@lag.com,Female,3456789012,18 Okt 1967,Math,Music,1213 Maple St. Amsterdam,Rajasthan,Jaiselmer
+Neutral being,lm@lag.com,Other,2345678901,22 Feb 1999,Medicine,Reading,1213 Maple St. Amsterdam,Haryana,Panipat
+Marie Curie,dm@heaven.com,Female,3456789012,20 Jan 1955,Math,Reading,1617 Birch St. Wroclaw,Haryana,Karnal
+Marie Curie,mb@arg.com,Female,3456789012,22 Feb 1999,Medicine,Music,1011 Pine St. Wroclaw,Rajasthan,Jaipur
+Marie Curie,lm@lag.com,Female,2345678901,20 Jan 1955,Philosophy,Reading,1617 Birch St. Wroclaw,Uttar Pradesh,Agra
+Neutral being,dm@heaven.com,Other,1234567890,22 Feb 1999,Philosophy,Reading,1011 Pine St. Wroclaw,Rajasthan,Jaiselmer
+Marie Curie,dm@heaven.com,Female,3456789012,18 Okt 1967,Philosophy,Sports,1011 Pine St. Wroclaw,Uttar Pradesh,Lucknow
+Diego Maradonna,dm@heaven.com,Male,1234567890,18 Okt 1967,Math,Music,123 Main St. Oslo,Uttar Pradesh,Merrut
+Diego Maradonna,dm@heaven.com,Male,1234567890,18 Okt 1967,Math,Sports,1011 Pine St. Wroclaw,Uttar Pradesh,Agra
+Neutral being,lm@lag.com,Other,3456789012,22 Feb 1999,Math,Sports,1213 Maple St. Amsterdam,Rajasthan,Jaipur
+Diego Maradonna,dm@heaven.com,Male,1234567890,18 Okt 1967,Philosophy,Reading,1213 Maple St. Amsterdam,Haryana,Karnal
+Diego Maradonna,dm@heaven.com,Male,1234567890,18 Okt 1967,Medicine,Music,123 Main St. Oslo,Haryana,Panipat
+Marie Curie,mb@arg.com,Female,1234567890,22 Feb 1999,Math,Reading,123 Main St. Oslo,Uttar Pradesh,Lucknow
+Neutral being,lm@lag.com,Other,3456789012,20 Jan 1955,Philosophy,Sports,1617 Birch St. Wroclaw,NCR,Delhi
+Neutral being,lm@lag.com,Other,2345678901,22 Feb 1999,Medicine,Music,1617 Birch St. Wroclaw,NCR,Gurgaon
+Marie Curie,mb@arg.com,Female,2345678901,20 Jan 1955,Medicine,Sports,123 Main St. Oslo,Rajasthan,Jaiselmer
+Neutral being,mb@arg.com,Other,2345678901,20 Jan 1955,Philosophy,Sports,1213 Maple St. Amsterdam,Uttar Pradesh,Merrut
+Diego Maradonna,dm@heaven.com,Male,1234567890,18 Okt 1967,Medicine,Reading,1213 Maple St. Amsterdam,NCR,Noida
+Neutral being,lm@lag.com,Other,2345678901,20 Jan 1955,Math,Music,123 Main St. Oslo,Haryana,Karnal
+Diego Maradonna,dm@heaven.com,Male,1234567890,18 Okt 1967,Math,Music,1617 Birch St. Wroclaw,Rajasthan,Jaiselmer
+Marie Curie,mb@arg.com,Female,3456789012,20 Jan 1955,Math,Reading,1011 Pine St. Wroclaw,NCR,Noida
+Diego Maradonna,dm@heaven.com,Male,1234567890,18 Okt 1967,Math,Reading,1213 Maple St. Amsterdam,Uttar Pradesh,Lucknow
+Marie Curie,lm@lag.com,Female,1234567890,18 Okt 1967,Math,Reading,1617 Birch St. Wroclaw,Uttar Pradesh,Merrut
+Marie Curie,lm@lag.com,Female,1234567890,22 Feb 1999,Medicine,Music,1011 Pine St. Wroclaw,NCR,Delhi
+Diego Maradonna,dm@heaven.com,Male,1234567890,18 Okt 1967,Philosophy,Reading,123 Main St. Oslo,NCR,Gurgaon
+Diego Maradonna,dm@heaven.com,Male,1234567890,18 Okt 1967,Philosophy,Reading,1011 Pine St. Wroclaw,Uttar Pradesh,Merrut
