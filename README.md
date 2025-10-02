@@ -16,7 +16,8 @@ Dev environment
 
 - Install tomaton  (pip install testomaton)
 - Install playwright (npm init playwright@latest) to project folder - install with TS and github actions workflow, rest default
-- 
+- Install csv-parse (npm install csv-parse)
+
 
 Things to do
 

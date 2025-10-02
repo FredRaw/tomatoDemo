@@ -28,15 +28,15 @@ functions:
           - choice: "22 Feb 1999"
       - parameter: subjects
         choices:
-          - choice: "Math"
-          - choice: "Medicine"
-          - choice: "Philosophy"
+          - choice: "Maths"
+          - choice: "Physics"
+          - choice: "History"
       - parameter: hobbies
         choices:
           - choice: "Sports"
           - choice: "Reading"
           - choice: "Music"
-      - parameter: current Address
+      - parameter: current_address
         choices:
           - choice: "123 Main St. Oslo"
           - choice: "1011 Pine St. Wroclaw"
