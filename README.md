@@ -23,4 +23,5 @@ Things to do
 
 - Make a testomaton model.yaml file of the site you want to test
 - $ tomato model.yaml > tomato_combinations.csv (To generate the testdata and print them to a .CSV file)
+- Run the playwright tests: npx playwright test tests/firstTest.spec.ts
 - 

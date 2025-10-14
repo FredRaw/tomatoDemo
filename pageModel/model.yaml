@@ -3,7 +3,7 @@ functions:
     parameters:
       - parameter: name
         choices:
-          - choice: "Diego Maradonna"
+          - choice: "Diego Maradona"
           - choice: "Marie Curie"
           - choice: "Neutral being"
       - parameter: email
@@ -62,7 +62,7 @@ functions:
           - choice: "Jaiselmer"
     logic:
       - constraint: name - email - gender - mobile - date of birth
-        expression: IF 'name' IS 'Diego Maradonna' THEN 'email' IS 'dm@heaven.com' AND 'gender' IS 'Male' AND 'mobile' IS '1234567890' AND 'birthdate' IS '18 Okt 1967'
+        expression: IF 'name' IS 'Diego Maradona' THEN 'email' IS 'dm@heaven.com' AND 'gender' IS 'Male' AND 'mobile' IS '1234567890' AND 'birthdate' IS '18 Okt 1967'
       - constraint: name - gender
         expression: IF 'name' IS 'Marie Curie' THEN 'gender' IS 'Female'
       - constraint: name - gender
