@@ -8,7 +8,7 @@ page suitable for model based and combinatorial testing. You need to either find
 
 Suggested flow
 
-1. Assume that model is premade and use the terminal to have tomato generate combinations
+1. Assume that model is premade and use the terminal to make tomato generate combinations
 2. Use playwright to run test with the combinations generated from tomato
 3. Use GA pages to display test report
 
