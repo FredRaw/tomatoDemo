@@ -1,5 +1,8 @@
 name: Playwright Tests and push report to branch
 on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
   push:
     branches: [ main, master ]
 jobs:
